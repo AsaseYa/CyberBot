@@ -5,7 +5,11 @@ module.exports.run = (client, message, args) => {
 module.exports.help = {
     name: "say",
     aliases: ['s', 'repeat'],
+    category: 'misc',
     description: "le bot répète l'argument",
+    usage: "<votre_message>",   
     args: true,
-    usage: "<votre_message>"
+    hasMention: false,
+    permissions: false,
+    //isUserAdmin: false
 }
