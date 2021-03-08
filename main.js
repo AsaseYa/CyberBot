@@ -2,7 +2,6 @@
 const { Client, Collection } = require("discord.js"); //import le bot et les collections
 const { readdirSync } = require("fs"); //Import la bibliothèque fs (readdirSync)
 const { TOKEN, PREFIX } = require("./config");
-const { diceFunction } = require("./utils/functions/diceFunction");
 const { noMention, noArgs, noPermissions } = require("./utils/functions/failFunction");
 
 
