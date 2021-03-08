@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
+const { PREFIX } = require('../../config');
 
-module.exports.errorEmbedMsg = (command, errorMsg, PREFIX) => {
+module.exports.errorEmbedMsg = (command, errorMsg) => {
     const helpEmbed = new MessageEmbed()
       .setColor("#36393F")
       .setTitle(`**REPORT** : \`${command.help.name}\``)
@@ -17,4 +18,3 @@ module.exports.errorEmbedMsg = (command, errorMsg, PREFIX) => {
     }
     return helpEmbed;
 }
-

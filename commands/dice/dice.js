@@ -1,9 +1,14 @@
 const { diceFunction } = require("../../utils/functions/diceFunction");
 
 module.exports.run = (client, message, args, commandName) => {
-    const typeOfDice = commandName.substring(1);
-    const randomDice = () => Math.floor(Math.random() * typeOfDice) + 1;
-    diceFunction(client, message, args, randomDice);
+  let typeOfDice = '';
+  if(commandName === 'dice' || commandName === 'd'){
+    typeOfDice = 20;
+  } else { 
+    typeOfDice = commandName.substring(1);
+  };
+  const randomDice = () => Math.floor(Math.random() * typeOfDice) + 1;
+  diceFunction(client, message, args, randomDice);
 };
 
 
@@ -16,5 +21,4 @@ module.exports.help = {
   args: false,
   hasMention: false,
   permissions: false,
-  //isUserAdmin: false
 };

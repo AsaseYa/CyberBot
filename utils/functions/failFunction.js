@@ -1,9 +1,10 @@
 const { MessageEmbed } = require("discord.js");
+const { PREFIX } = require('../../config');
 
 
 let failMsg = "";
 
-function failEmbedMsg(command, PREFIX) {
+function failEmbedMsg(command) {
   const failEmbed = new MessageEmbed()
     .setColor("#36393F")
     .setTitle(`**REPORT** : \`${command.help.name}\``)

@@ -3,8 +3,9 @@ require('dotenv').config();
 const { Client, Collection } = require("discord.js"); //import le bot et les collections
 const { readdirSync } = require("fs"); //Import la bibliothèque fs (readdirSync)
 const { noMention, noArgs, noPermissions } = require("./utils/functions/failFunction");
+const { PREFIX } = require("./config")
 
-const PREFIX = process.env.prefix
+
 
 const client = new Client(); //crée le bot
 ["commands"].forEach((x) => (client[x] = new Collection())); //crée une collection des commandes
@@ -77,17 +78,6 @@ client.on("message", (message) => {
     return noArgs(client, message, command);
 }
 
-
-  // utilisé lorsque command a isUserAdmin: true / currently aucun isUserAdmin
-  //vérifie si l'utilisateur est mentionné 
-  //if(/**command.help.isUserAdmin && **/!user) return message.reply(`Il faut mentionner un utilisateur: voici la structure: \`${PREFIX}${command.help.name} ${command.help.usage}\``);
-
-  //Si l'utilisateur  sur lequel la commande est utilisée = admin(BAN_MEMBER)
-  /**if (command.help.isUserAdmin && message.guild.member(user).hasPermission('BAN_MEMBERS')) {
-    return message.reply("Tu ne peux pas utiliser cette commande sur cet utilisateur.");
-  }**/
-
-
   command.run(client, message, args, commandName, PREFIX); //run la commande
 });
 
@@ -95,4 +85,4 @@ client.on("ready", () => {
   console.log(`${client.user.tag} est connecté et prêt à l'emploi l'ami.`); // lance le bot
 });
 
-client.login();
+client.login(process.env.DISCORD_TOKEN);
