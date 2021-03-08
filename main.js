@@ -1,10 +1,10 @@
+require('dotenv').config();
 //Import librairies
 const { Client, Collection } = require("discord.js"); //import le bot et les collections
 const { readdirSync } = require("fs"); //Import la bibliothèque fs (readdirSync)
-const { TOKEN, PREFIX } = require("./config");
 const { noMention, noArgs, noPermissions } = require("./utils/functions/failFunction");
 
-
+const PREFIX = process.env.prefix
 
 const client = new Client(); //crée le bot
 ["commands"].forEach((x) => (client[x] = new Collection())); //crée une collection des commandes
@@ -88,11 +88,11 @@ client.on("message", (message) => {
   }**/
 
 
-  command.run(client, message, args, commandName); //run la commande
+  command.run(client, message, args, commandName, PREFIX); //run la commande
 });
 
 client.on("ready", () => {
   console.log(`${client.user.tag} est connecté et prêt à l'emploi l'ami.`); // lance le bot
 });
 
-client.login(TOKEN);
+client.login();

@@ -1,10 +1,9 @@
 const { MessageEmbed } = require("discord.js");
-const { PREFIX } = require("../../config.js");
 const { readdirSync } = require("fs");
 const categoryList = readdirSync('./commands');
 
 
-module.exports.run = (client, message, args) => { 
+module.exports.run = (client, message, args, PREFIX) => { 
     if (!args.length) {
         const embed = new MessageEmbed()
             .setColor("#36393F")
