@@ -7,7 +7,9 @@ module.exports.help = {
     aliases: ['hello'],
     category: 'misc',
     description: "Renvoie un salut",
+    usage: "",
     args: false,
-    usage: '',
-    permissions: false
+    hasMention: false,
+    permissions: false,
+    //isUserAdmin: false
 }
