@@ -1,9 +1,8 @@
+const { MESSAGES } = require("../../utils/functions/constantes/constants");
 const Canvas = require('canvas');
 const Discord = require('discord.js');
 
-
-
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message) => {
     
     //chope la mention
     let user = message.guild.member(message.mentions.users.first());
@@ -55,13 +54,4 @@ module.exports.run = async (client, message, args) => {
 };
 
 
-module.exports.help = {
-    name: 'taunt', 
-    aliases: ['taunt', 't'],
-    category: ['misc'],
-    description: "reprend le dernier message de l'utilisateur mentionné et le renvoie modifié",
-    usage: '<your_mention>',
-    args: true,
-    hasMention: true,
-    permissions: false,
-};
+module.exports.help = MESSAGES.COMMANDS.MISC.TAUNT;

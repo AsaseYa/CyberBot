@@ -1,3 +1,4 @@
+const { MESSAGES } = require("../../utils/functions/constantes/constants");
 const { MessageEmbed } = require("discord.js");
 const { readdirSync } = require("fs");
 const categoryList = readdirSync('./commands');
@@ -5,7 +6,6 @@ const { PREFIX } = require('../../config');
 
 
 module.exports.run = (client, message, args) => { 
-    console.log(PREFIX);
     if (!args.length) {
         const embed = new MessageEmbed()
             .setColor("#36393F")
@@ -32,13 +32,4 @@ module.exports.run = (client, message, args) => {
     }
 };
 
-module.exports.help = {
-    name: "help",
-    aliases: ['help'],
-    category: 'misc',
-    description: "Renvoie une liste de commande ou les informations sur une seule commande",
-    args: false,
-    hasMention: false,
-    usage: "<votre_message>",
-    permissions: false,
-};
+module.exports.help = MESSAGES.COMMANDS.MISC.HELP;

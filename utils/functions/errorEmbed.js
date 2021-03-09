@@ -18,3 +18,4 @@ module.exports.errorEmbedMsg = (command, errorMsg) => {
     }
     return helpEmbed;
 }
+

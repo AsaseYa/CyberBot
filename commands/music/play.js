@@ -1,3 +1,4 @@
+const { MESSAGES } = require("../../utils/functions/constantes/constants");
 const ytdl = require('ytdl-core');
 const ytSearch = require('yt-search');
 
@@ -110,14 +111,4 @@ const stop_song = (message, server_queue) => {
 }
 
 
-module.exports.help = {
-    name: 'play',
-    aliases: ['skip', 'stop'],
-    category: 'music',
-    description: "Play une musique",
-    usage: "<url_YT>",
-    args: false,
-    hasMention: false,
-    permissions: false,
-    //isUserAdmin: false
-}
+module.exports.help = MESSAGES.COMMANDS.MUSIC.PLAY;

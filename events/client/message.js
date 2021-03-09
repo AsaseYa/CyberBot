@@ -4,6 +4,9 @@ const { noMention, noArgs, noPermissions } = require("../../utils/functions/fail
 
 
 module.exports = (client, message) => {
+  
+  if (message.channel.type === 'dm') return client.emit("directMessage", message);
+  
   // si ça ne commence pas par le préfix ou envoyé par le bot
   if (message.author.bot || !message.content.startsWith(PREFIX)) return;
 
@@ -24,17 +27,7 @@ module.exports = (client, message) => {
     );
 
   //si la commande n'existe pas ou s'il n'y a pas d'argument
-  if (!command) {
-    message.author.send(
-      `La commande "${message.content}" n'existe pas, voici la liste des commandes disponibles ${message.author}: \`${commandArray}\``
-    );
-    if (message.channel.type === "dm") {
-      return;
-    } else {
-      message.delete(); //supprime la commande mal executée si celle-ci n'est pas en DM
-      return;
-    }
-  }
+  if (!command) return (`La commande ${command} n'existe pas.`)
 
   //Si permissions: true
   if (
