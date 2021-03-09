@@ -20,6 +20,6 @@ module.exports = async (client, channel) => {
       .setTimestamp()
       .setFooter(executor.username, executor.displayAvatarURL());
 
-    client.channels.cache.get("818852795880833024").send(embed);
+    client.channels.cache.get("814662861829308418").send(embed);
   }
 };

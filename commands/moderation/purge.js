@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
         .setDescription(`**Action**: purge\n**Nombre de messages**: ${args[0]}\n**Salons**: ${message.channel}`)
 
     
-    client.channels.cache.get('818852795880833024').send(embed);
+    client.channels.cache.get('814662861829308418').send(embed);
 }
 
 
