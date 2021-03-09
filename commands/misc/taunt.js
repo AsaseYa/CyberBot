@@ -43,7 +43,7 @@ module.exports.run = async (client, message, args) => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = "#0b0a0a";
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
-    ctx.font = '900 30px impact';
+    ctx.font = '900 30px sans-serif';
     ctx.fillStyle = "#ffffff";
     ctx.fillText(upperCaseSentence, 50, 650);
     ctx.strokeText(upperCaseSentence, 50, 650)
