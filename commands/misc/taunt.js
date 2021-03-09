@@ -24,9 +24,12 @@ module.exports.run = async (client, message, args) => {
     if(sentence.length === 0) return message.channel.send(`Le dernier message de ${user.displayName} ne peut être taunt.`);
     
     //si le message est trop grand = \n
-    if (sentence.length > 54) {
-        sentence.splice(55, 0, '\n');
-    }
+    if (sentence.length > 94) {
+        sentence.splice(48, 0, '\n');
+        sentence.splice(95, 0, '\n');
+    }else if (sentence.length > 47) {
+        sentence.splice(48, 0, '\n');
+    };
 
     //crée des lettres uppercase random
     let upperCaseSentence = sentence.map((v) =>
@@ -40,9 +43,10 @@ module.exports.run = async (client, message, args) => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = "#0b0a0a";
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
-    ctx.font = '30px sans-serif';
+    ctx.font = '900 30px impact';
     ctx.fillStyle = "#ffffff";
-    ctx.fillText(upperCaseSentence, 50, 700);
+    ctx.fillText(upperCaseSentence, 50, 650);
+    ctx.strokeText(upperCaseSentence, 50, 650)
     ctx.beginPath();
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'custom__image.png');
