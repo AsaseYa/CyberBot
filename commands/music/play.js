@@ -5,7 +5,8 @@ const ytSearch = require('yt-search');
 //Global queue for your bot. Every server will have a key and value pair in this map. { guild.id, queue_constructor{} }
 const queue = new Map();
 
-module.exports.run = async (client, message, args, commandName) => {
+module.exports.run = async (client, message, args, settings) => {
+        let commandMusic = message.content.slice(settings.prefix.length).split(/ +/).shift().toLowerCase();
 
         //Checking for the voicechannel and permissions (you can add more permissions if you like).
         const voice_channel = message.member.voice.channel;
@@ -18,7 +19,7 @@ module.exports.run = async (client, message, args, commandName) => {
         const server_queue = queue.get(message.guild.id);
 
         //If the user has used the play command
-        if (commandName === 'play'){
+        if (commandMusic === 'play'){
             if (!args.length) return message.channel.send('You need to send the second argument!');
             let song = {};
 
@@ -70,8 +71,8 @@ module.exports.run = async (client, message, args, commandName) => {
                 return message.channel.send(`👍 **${song.title}** added to queue!`);
             }
         } 
-        else if(commandName === 'skip') skip_song(message, server_queue);
-        else if(commandName === 'stop') stop_song(message, server_queue);    
+        else if(commandMusic === 'skip') skip_song(message, server_queue);
+        else if(commandMusic === 'stop') stop_song(message, server_queue);    
 }
 
 
