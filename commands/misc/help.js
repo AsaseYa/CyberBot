@@ -2,14 +2,14 @@ const { MESSAGES } = require("../../utils/functions/constantes/constants");
 const { MessageEmbed } = require("discord.js");
 const { readdirSync } = require("fs");
 const categoryList = readdirSync('./commands');
-const { PREFIX } = require('../../config');
 
 
-module.exports.run = (client, message, args) => { 
+
+module.exports.run = (client, message, args, settings) => { 
     if (!args.length) {
         const embed = new MessageEmbed()
             .setColor("#36393F")
-            .addField("Liste des commandes", `Une liste de toutes les sous-catégories disponibles et leurs commandes.\nPour plus d'informations sur une commande, tapez \`${PREFIX}help <command_name>\`.`)
+            .addField("Liste des commandes", `Une liste de toutes les sous-catégories disponibles et leurs commandes.\nPour plus d'informations sur une commande, tapez \`${settings.prefix}help <command_name>\`.`)
         for (const category of categoryList) {
             embed.addField(
                 `${category}`,
@@ -26,7 +26,7 @@ module.exports.run = (client, message, args) => {
             .setColor("#36393F")
             .setTitle(`\`${command.help.name}\``)
             .addField("Description", `${command.help.description}`)
-            .addField("Utilisation", command.help.usage ? `${PREFIX}${command.help.name} ${command.help.usage}` : `${PREFIX}${command.help.name}`, true)
+            .addField("Utilisation", command.help.usage ? `${settings.prefix}${command.help.name} ${command.help.usage}` : `${settings.prefix}${command.help.name}`, true)
         if (command.help.aliases.length > 1) embed.addField("Alias", `${command.help.aliases.join(', ')}`, true);
         return message.channel.send(embed);
     }

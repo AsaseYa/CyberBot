@@ -7,5 +7,5 @@ module.exports = (client, member) => {
         .setFooter("Un utilisateur a quitté")
         .setTimestamp();
     
-    client.channels.cache.get('818886445078544394').send(embed);
+    client.channels.cache.get('818852795880833024').send(embed);
 }

@@ -1,17 +1,19 @@
-const { PREFIX } = require("../../config");
 const { Collection } = require("discord.js"); //import le bot et les collections
 const { noMention, noArgs, noPermissions } = require("../../utils/functions/failFunction");
 
 
-module.exports = (client, message) => {
-  
+module.exports = async (client, message) => {
+  const settings = await client.getGuild(message.guild);
+
   if (message.channel.type === 'dm') return client.emit("directMessage", message);
   
   // si ça ne commence pas par le préfix ou envoyé par le bot
-  if (message.author.bot || !message.content.startsWith(PREFIX)) return;
+  if (message.author.bot || !message.content.startsWith(settings.prefix)) return;
 
-  //Remove PREFIX et divise str en array pour séparer arguments
-  const args = message.content.slice(PREFIX.length).split(/ +/);
+
+
+  //Remove settings.prefix et divise str en array pour séparer arguments
+  const args = message.content.slice(settings.prefix.length).split(/ +/);
 
   //Separe en array les éléments et les lower case
   const commandName = args.shift().toLowerCase();
@@ -34,18 +36,18 @@ module.exports = (client, message) => {
     command.help.permissions &&
     !message.member.hasPermission("BAN_MEMBERS")
   ) {
-    return noPermissions(client, message, command);
+    return noPermissions(message, command, settings);
   }
 
   //Si hasMention: true
   if (command.help.hasMention && !user) {
-    return noMention(client, message, command);
+    return noMention(message, command, settings);
   }
 
   //Si args: True
   if (command.help.args && !args.length) {
-    return noArgs(client, message, command);
+    return noArgs(message, command, settings);
   }
 
-  command.run(client, message, args, commandName, PREFIX); //run la commande
+  command.run(client, message, args, settings); //run la commande
 };

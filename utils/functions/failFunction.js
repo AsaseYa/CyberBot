@@ -1,10 +1,10 @@
 const { MessageEmbed } = require("discord.js");
-const { PREFIX } = require('../../config');
+
 
 
 let failMsg = "";
 
-function failEmbedMsg(command) {
+function failEmbedMsg(command, settings) {
   const failEmbed = new MessageEmbed()
     .setColor("#36393F")
     .setTitle(`**REPORT** : \`${command.help.name}\``)
@@ -12,8 +12,8 @@ function failEmbedMsg(command) {
     .addField(
       "Utilisation",
       command.help.usage
-        ? `${PREFIX}${command.help.name} ${command.help.usage}`
-        : `${PREFIX}${command.help.name}`,
+        ? `${settings.prefix}${command.help.name} ${command.help.usage}`
+        : `${settings.prefix}${command.help.name}`,
       true
     );
   if (command.help.aliases.length > 1) {
@@ -22,17 +22,17 @@ function failEmbedMsg(command) {
   return failEmbed;
 }
 
-module.exports.noMention = (client, message, command) => {
+module.exports.noMention = (message, command, settings) => {
   failMsg = `La commande \`${command.help.name}\` demande une mention (@Darnaf).`;
-  message.reply(failEmbedMsg(command));
+  message.reply(failEmbedMsg(command, settings));
 };
 
-module.exports.noArgs = (client, message, command) => {
+module.exports.noArgs = (message, command, settings) => {
   failMsg = `La commande \`${command.help.name}\` demande un argument.`;
-  message.reply(failEmbedMsg(command));
+  message.reply(failEmbedMsg(command, settings));
 };
 
-module.exports.noPermissions = (client, message, command) => {
+module.exports.noPermissions = (message, command, settings) => {
   failMsg = `Tu n'as pas les droits pour utiliser la commande \`${command.help.name}\`.`;
-  message.reply(failEmbedMsg(command));
+  message.reply(failEmbedMsg(command, settings));
 };

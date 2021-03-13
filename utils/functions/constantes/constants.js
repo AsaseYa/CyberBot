@@ -129,6 +129,29 @@ const MESSAGES = {
                 hasMention: false,
                 permissions: false,
             }
+        },
+        ADMIN: {
+
+            EVAL: {
+                name: 'eval',
+                aliases: ['eval'],
+                category: 'admin',
+                description: "Renvoie un code javascript testé",
+                usage: "<key> <value>",
+                args: true,
+                hasMention: false,
+                permissions: true,
+            },
+            CONFIG: {
+                name: "config",
+                aliases: ['config'],
+                category: 'admin',
+                description: "Modifier la base de donnée",
+                usage: "<code_to_test>",
+                args: true,
+                hasMention: false,
+                permissions: true,
+            }
         }
     }
 }

@@ -1,12 +1,14 @@
 const { MESSAGES } = require("../../utils/functions/constantes/constants");
 const { diceFunction } = require("../../utils/functions/diceFunction");
 
-module.exports.run = (client, message, args, commandName) => {
+
+module.exports.run = (client, message, args, settings) => {
+  let diceCommandName = message.content.slice(settings.prefix.length).split(/ +/).shift().toLowerCase();
   let typeOfDice = '';
-  if(commandName === 'dice' || commandName === 'd'){
+  if(diceCommandName === 'dice' || diceCommandName === 'd'){
     typeOfDice = 20;
   } else { 
-    typeOfDice = commandName.substring(1);
+    typeOfDice = diceCommandName.substring(1);
   };
   const randomDice = () => Math.floor(Math.random() * typeOfDice) + 1;
   diceFunction(client, message, args, randomDice);
