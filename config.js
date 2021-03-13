@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
     DBCONNECTION: process.env.DBCONNECTION,
     DEFAULTSETTINGS: {
