@@ -1,1 +1,1 @@
-CyberBuddyJavascript
+CyberBot

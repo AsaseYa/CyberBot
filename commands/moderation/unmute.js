@@ -1,8 +1,8 @@
-const { MESSAGES } = require("../../utils/functions/constantes/constants");
+const { MESSAGES } = require("../../utils/constantes/constants");
 const ms = require("ms");
 const { MessageEmbed } = require("discord.js");
 
-module.exports.run = (client, message, args) => {
+module.exports.run = (client, message, args, settings) => {
     let user = message.guild.member(message.mentions.users.first());
     let muteRole = message.guild.roles.cache.find(r => r.name === 'muted');
 
@@ -21,7 +21,7 @@ module.exports.run = (client, message, args) => {
         .setTimestamp()
         .setFooter(message.author.username, message.author.avatarURL());
 
-    client.channels.cache.get('818852795880833024').send(embed);
+        client.channels.cache.get(settings.logChannel).send(embed);
 };
 
 

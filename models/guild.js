@@ -2,21 +2,21 @@ const mongoose = require("mongoose");
 const { DEFAULTSETTINGS: defaults } = require("../config");
 
 const guildSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    guildID: String,
-    guildName: String,
-    prefix: {
-        "type": String,
-        "default": defaults.prefix
-    },
-    logChannel: {
-        "type": String,
-        "default": defaults.logChannel
-    },
-    welcomeMessage: {
-        "type": String,
-        "default": defaults.welcomeMessage
-    }
+     _id: mongoose.Schema.Types.ObjectId,
+     guildID: String,
+     guildName: String,
+     prefix: {
+          "type": String,
+          "default": defaults.prefix,
+     },
+     logChannel: {
+          "type": String,
+          "default": defaults.logChannel,
+     },
+     welcomeChannel: {
+          "type": String,
+          "default": defaults.welcomeChannel,
+     },
 });
 
 module.exports = mongoose.model("Guild", guildSchema);
