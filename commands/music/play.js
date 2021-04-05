@@ -109,7 +109,7 @@ module.exports.run = async (client, message, args, settings) => {
           }
      } else if (commandMusic === "skip") skip_song(message, server_queue);
      else if (commandMusic === "stop") stop_song(message, server_queue);
-     else if (commandMusic === "playlist") {
+     else if (commandMusic === "queue") {
           if(!server_queue) return message.channel.send("Il n'y pas pas de musique dans la playlist")
           let playlist = [];
           let songsArray = server_queue.songs;

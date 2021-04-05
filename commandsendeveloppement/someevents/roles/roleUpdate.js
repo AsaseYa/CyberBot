@@ -4,6 +4,8 @@ module.exports = async (client, role) => {
           type: "ROLE_UPDATE",
      });
      const latestRoleUpdate = fetchGuildAuditLogs.entries.first();
+     // console.log(fetchGuildAuditLogs);
+     // console.log(latestRoleUpdate);
 
      await client.updateRole(role.id, {
           roleName: latestRoleUpdate.changes[0].new,

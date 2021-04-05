@@ -11,16 +11,16 @@ const MESSAGES = {
                     hasMention: false,
                     permissions: true,
                },
-               CONFROLES: {
-                    name: "confroles",
-                    aliases: ["confroles"],
-                    category: "admin",
-                    description: "Modifie les roles sur la base de donnée",
-                    usage: "<list>",
-                    args: true,
-                    hasMention: false,
-                    permissions: true,
-               },
+               // CONFROLES: {
+               //      name: "confroles",
+               //      aliases: ["confroles"],
+               //      category: "admin",
+               //      description: "Modifie les roles sur la base de donnée",
+               //      usage: "<list>",
+               //      args: true,
+               //      hasMention: false,
+               //      permissions: true,
+               // },
                EVAL: {
                     name: "eval",
                     aliases: ["eval"],
@@ -52,28 +52,6 @@ const MESSAGES = {
                     args: true,
                     hasMention: false,
                     permissions: false,
-               },
-          },
-          COLLECTORS: {
-               MSGCOLLECTOR: {
-                    name: "msgcollector",
-                    aliases: ["msgcollector", "msgc", "mcol"],
-                    category: "collectors",
-                    description: "MSG collector",
-                    usage: "<msg_to_collect>",
-                    args: true,
-                    hasMention: false,
-                    permissions: true,
-               },
-               REACTCOLLECTOR: {
-                    name: "reactcollector",
-                    aliases: ["reactcollector", "reactc", "rcol"],
-                    category: "collectors",
-                    description: "react collector",
-                    usage: "",
-                    args: false,
-                    hasMention: false,
-                    permissions: true,
                },
           },
           DICE: {
@@ -147,6 +125,17 @@ const MESSAGES = {
                },
           },
           MISC: {
+               DIDIER: {
+                    name: "didier",
+                    aliases: ["didier", "didi"],
+                    category: "misc",
+                    description: "Renvoie une réponse à ta question",
+                    usage: "<votre_question",
+                    args: false,
+                    hasMention: false,
+                    permissions: false,
+               },
+
                SAY: {
                     name: "say",
                     aliases: ["s", "repeat"],
@@ -254,7 +243,7 @@ const MESSAGES = {
           MUSIC: {
                PLAY: {
                     name: "play",
-                    aliases: ["skip", "stop", "playlist"],
+                    aliases: ["skip", "stop", "queue"],
                     category: "music",
                     description: "Play une musique",
                     usage: "<url_YT>",

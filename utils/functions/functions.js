@@ -1,6 +1,6 @@
 const { Client } = require("discord.js");
 const mongoose = require("mongoose");
-const { Guild, User, Role } = require("../../models/index");
+const { Guild, User, /*Role*/ } = require("../../models/index");
 
 module.exports = (client) => {
      //create and updateGuild
@@ -77,30 +77,30 @@ module.exports = (client) => {
      };
 
      //Create and update roles
-     client.createRoles = async (role) => {
-          const merged = Object.assign(
-               { _id: mongoose.Types.ObjectId() },
-               role
-          );
-          const createRole = await new Role(merged);
-          createRole
-               .save()
-               .then((u) => console.log(`Nouveau role -> ${u.roleName}`));
-     };
-     client.getRole = async (role) => {
-          const data = await Role.findOne({ roleID: role });
-          if (data) return data;
-          else return;
-     };
-     client.updateRole = async (role, settings) => {
-          let data = await client.getRole(role);
-          if (typeof data !== "object") data = {};
-          if (settings) {
-               for (const key in settings) {
-                    if (data[key] !== settings[key]) data[key] = settings[key];
-               }
-          }
-          return data.updateOne(settings);
-     };
-
+     // client.createRoles = async (role) => {
+     //      const merged = Object.assign(
+     //           { _id: mongoose.Types.ObjectId() },
+     //           role
+     //      );
+     //      const createRole = await new Role(merged);
+     //      createRole
+     //           .save()
+     //           .then((u) => console.log(`Nouveau role -> ${u.roleName}`));
+     // };
+     // client.getRole = async (role) => {
+     //      const data = await Role.findOne({ roleID: role });
+     //      if (data) return data;
+     //      else return;
+     // };
+     // client.updateRole = async (role, settings) => {
+     //      let data = await client.getRole(role);
+     //      if (typeof data !== "object") data = {};
+     //      if (settings) {
+     //           for (const key in settings) {
+     //                console.log(data[key], settings[key])
+     //                if (data[key] !== settings[key]) data[key] = settings[key];
+     //           }
+     //      }
+     //      return data.updateOne(settings);
+     // };
 };
