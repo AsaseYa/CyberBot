@@ -16,6 +16,8 @@ module.exports = async (client, message) => {
      //si l'author est le bot
      if (message.author.bot) return;
 
+     
+
      //création de l'utilisateur dan la base de donnée
      if (!dbUser)
           await client.createUser({
@@ -36,7 +38,7 @@ module.exports = async (client, message) => {
      const userLevel = Math.floor(0.1 * Math.sqrt(dbUser.experience));
      if (dbUser.level < userLevel) {
           message.channel.send(
-               `Bravo ${dbUser.name}, tu viens de gagner un niveau d'accréditation. Tu es maintenant niveau \`${userLevel}\`. La France est fière de toi!`
+               `Bravo ${message.member.displayName}, tu viens de gagner un niveau d'accréditation. Tu es maintenant niveau \`${userLevel}\`. La France est fière de toi!`
           );
           client.updateUser(message.member, { level: userLevel });
      }

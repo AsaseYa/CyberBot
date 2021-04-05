@@ -9,6 +9,7 @@ module.exports.run = (client, message, args) => {
           return message.channel.send(`L'URL ${args[0]} ne semble pas valide. Je ne peux pas charger l'image.`);
      } else {
           client.user.setAvatar(args[0]);
+          message.channel.send("L'avatar a bien été changé")
      };
 };
 

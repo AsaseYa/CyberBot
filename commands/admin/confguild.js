@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args, settings) => {
                message.delete();
                break;
           }
-          case "roles": {
+          case "logChannel": {
                if (newSetting) {
                     await client.updateGuild(message.guild, {
                          logChannel: newSetting,
