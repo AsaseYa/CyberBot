@@ -1,25 +1,27 @@
 const { MessageEmbed } = require("discord.js");
 
-module.exports = async (client, channel) => {
-  if (channel.type === "dm") return;
-  else {
-    const fetchGuildAuditLogs = await channel.guild.fetchAuditLogs({
-      limit: 1,
-      type: "CHANNEL_CREATE",
-    });
+module.exports = async(client, channel) => {
+     if (channel.type === "dm") {
+          return;
+     } else {
+          const fetchGuildAuditLogs = await channel.guild.fetchAuditLogs({
+               limit: 1,
+               type: "CHANNEL_CREATE",
+          });
 
-    const latestChannelCreated = fetchGuildAuditLogs.entries.first();
-    const { executor } = latestChannelCreated;
+          const latestChannelCreated = fetchGuildAuditLogs.entries.first();
+          const { executor } = latestChannelCreated;
+          const settings = await client.getGuild(channel.guild);
 
-    const embed = new MessageEmbed()
-      .setAuthor("Création d'un nouveau salon")
-      .setColor("#35f092")
-      .setDescription(
-        `**Action**: Création de salon\n**Salon créé**: ${channel.name}`
-      )
-      .setTimestamp()
-      .setFooter(executor.username, executor.displayAvatarURL());
+          const embed = new MessageEmbed()
+               .setAuthor("Création d'un nouveau salon")
+               .setColor("#35f092")
+               .setDescription(
+                    `**Action**: Création de salon\n**Salon créé**: ${channel.name}`
+               )
+               .setTimestamp()
+               .setFooter(executor.username, executor.displayAvatarURL());
 
-    client.channels.cache.get("818852795880833024").send(embed);
-  }
+          client.channels.cache.get(settings.welcomeChannel).send(embed);
+     }
 };

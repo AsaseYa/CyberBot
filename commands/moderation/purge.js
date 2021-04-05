@@ -1,8 +1,8 @@
-const { MESSAGES } = require("../../utils/functions/constantes/constants");
+const { MESSAGES } = require("../../utils/constantes/constants");
 const { MessageEmbed } = require("discord.js");
 
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args, settings) => {
     if(isNaN(args[0]) || (args[0] < 1 || args[0] > 100)) return message.reply('Il faut un nombre entre 1 et 100.');
     const messages = await message.channel.messages.fetch({
         limit: Math.min(args[0]),
@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
         .setDescription(`**Action**: purge\n**Nombre de messages**: ${args[0]}\n**Salons**: ${message.channel}`)
 
     
-    client.channels.cache.get('818852795880833024').send(embed);
+    client.channels.cache.get(settings.logChannel).send(embed);
 }
 
 

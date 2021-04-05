@@ -7,7 +7,7 @@ const loadCommands = (client, dir = "./commands/") => {
         files.endsWith(".js")
       );
       for (const file of commands) {
-        const getFileName = require(`../../../${dir}/${dirs}/${file}`);
+        const getFileName = require(`../../${dir}/${dirs}/${file}`);
         client.commands.set(getFileName.help.name, getFileName);
         console.log(`Command: From ${dirs}: ${getFileName.help.name}`);
       }
@@ -21,7 +21,7 @@ const loadCommands = (client, dir = "./commands/") => {
         files.endsWith(".js")
       );
       for (const event of events) {
-        const evt = require(`../../../${dir}/${dirs}/${event}`);
+        const evt = require(`../../${dir}/${dirs}/${event}`);
         const evtName = event.split(".")[0];
         client.on(evtName, evt.bind(null, client));
         console.log(`Event: From ${dirs}: ${evtName}`);
